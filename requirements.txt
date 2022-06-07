@@ -1,0 +1,2 @@
+Nuitka==0.8.3
+zstandard==0.17.0

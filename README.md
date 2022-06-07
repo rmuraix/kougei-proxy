@@ -20,18 +20,18 @@ Set-ExecutionPolicy Unrestricted
 `Unrestricted`の部分は[こちら](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2#powershell-execution-policies)を参考に変更できます。（UnrestrictedまたはBypassが必要です。）
 ### 実行ファイルを使う
 #### Windows
-Windowsで実行ポリシーを変更したくない方におすすめです。  
+Windowsで実行ポリシーを変更したくない方にオススメです。  
 `kougei-proxy-config.exe`を実行します。 
 #### Mac
 ソースコードからビルドする必要があります。[Develop](#develop)を参考にビルドしてください。
 ## Develop
 ### Requirement
-- Python 3.10.4以上
+- Python 3.10.5以上
 ### Setup
 仮想環境の作成（共通）
 ```shell
 $ cd [project directory]
-$ python3 -m venv venv
+$ python -m venv venv
 ```
 仮想環境の有効化  
 Windows  
@@ -42,14 +42,14 @@ Mac/Linux
 ```shell
 $ . venv/bin/activate
 ```
-パッケージのインストール(共通)
+パッケージのインストール（共通）
 ```shell
-$ pip install requirements.txt
+$ pip install -r requirements.txt
 ```
 ### Build
 ここでは[Nuitka](https://github.com/Nuitka/Nuitka)を使用します。
 ```shell
-$ nuitka --follow-imports --onefile kougei-proxy-config.py
+$ nuitka --follow-imports --onefile kougei-config.py
 ```
 ## Contributing  
 [CONTRIBUTING.md](/CONTRIBUTING.md)と[CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md)をお読みください。   
