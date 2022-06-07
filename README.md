@@ -31,7 +31,7 @@ Windowsで実行ポリシーを変更したくない方にオススメです。
 仮想環境の作成（共通）
 ```shell
 $ cd [project directory]
-$ python3 -m venv venv
+$ python -m venv venv
 ```
 仮想環境の有効化  
 Windows  
@@ -44,7 +44,7 @@ $ . venv/bin/activate
 ```
 パッケージのインストール（共通）
 ```shell
-$ pip install requirements.txt
+$ pip install -r requirements.txt
 ```
 ### Build
 ここでは[Nuitka](https://github.com/Nuitka/Nuitka)を使用します。
