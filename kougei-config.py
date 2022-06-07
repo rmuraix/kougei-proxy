@@ -14,10 +14,12 @@ def main():
 
     proxy = 'proxy-a.t-kougei.ac.jp:8080'
 
-    if ssid == 'Kougei-WiFi.1xST':
+    if ssid == 'kougei-WiFi.1xST':
         subprocess.run('git config --global http.proxy {}'.format(proxy), shell=True, stdout=PIPE, stderr=PIPE)
+        print('Gitプロキシ:有効')
     else:
         subprocess.run('git config --global --unset http.proxy', shell=True, stdout=PIPE, stderr=PIPE)
+        print('Gitプロキシ:無効')
 
     subprocess.call('PAUSE', shell=True)
 
