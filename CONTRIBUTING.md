@@ -11,9 +11,6 @@ Pull requests are great. Here's a quick guide:
 1. Fork the repo on github.  
 2. Make a new branch.  
 3. Install packages.  
-```shell
-pip install -r requirements.txt
-```
 4. Test your code and commits changes.
 5. Push to your fork and submit a pull request against `Develop`  
 6. Wait for review.  
@@ -24,8 +21,7 @@ All the submitted pieces including potential data must be compatible with the [L
 
 ## Submitting a Question
 
-If you want to ask a question about a specific Nuitka aspect, please be kind
-and first of all..
+If you want to ask a question about this project. please be kind and first of all..
 
 * Search for existing issues  
 * If not asked yet, ask it there.  
