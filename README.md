@@ -44,12 +44,12 @@ $ . venv/bin/activate
 ```
 パッケージのインストール(共通)
 ```shell
-pip install requirements.txt
+$ pip install requirements.txt
 ```
 ### Build
 ここでは[Nuitka](https://github.com/Nuitka/Nuitka)を使用します。
 ```shell
-nuitka --follow-imports --onefile kougei-proxy-config.py
+$ nuitka --follow-imports --onefile kougei-proxy-config.py
 ```
 ## Contributing  
 [CONTRIBUTING.md](/CONTRIBUTING.md)と[CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md)をお読みください。   
