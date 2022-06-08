@@ -10,7 +10,8 @@ if ( $result[$STATE].split(":")[1].trim() -eq "connected"){
     Write-Output ($result[$SSID].split(":")[1].trim())
     $SSIDNAME=$result[$SSID].split(":")[1].trim()
 }else{
-    Write-Output "LAN disconnected"
+    Write-Output "LAN接続なし"
+    $SSIDNAME=$null
 }
 
 chcp $code | out-null
@@ -23,5 +24,5 @@ if ($SSIDNAME -eq "kougei-WiFi.1xST") {
     Write-Output "Gitプロキシ:無効"
 }
 
-write-host "Press any key to continue..."
+write-host "続行するにはキーを押してください..."
 [void][System.Console]::ReadKey($true)
