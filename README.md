@@ -10,7 +10,7 @@ Script for [Tokyo polytechnic university](https://t-kougei.ac.jp/) students.
 [こちら](https://github.com/rmuraix/kougei-proxy/releases)から最新のリリースをダウンロードしてください。
 ### スクリプトファイルを使う
 #### Windows
-`kougei-proxy-config.ps1`を実行します。  
+`kougei-config.ps1`を実行します。  
 
 実行時、`このシステムではスクリプトの実行が無効になっているため～`などと表示される場合には実行ポリシーによって実行がブロックされています。実行するには設定を変更する必要があります。  
 PowerShellを*管理者権限*で起動し、以下のコマンドを実行します。
