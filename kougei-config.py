@@ -1,6 +1,5 @@
 import subprocess
 from subprocess import PIPE
-from plyer import notification
 
 def main():
     # kougei-config 1.0
@@ -17,16 +16,11 @@ def main():
 
     if ssid == 'kougei-WiFi.1xST':
         subprocess.run('git config --global http.proxy {}'.format(proxy), shell=True, stdout=PIPE, stderr=PIPE)
-        status = 'ON'
     else:
         subprocess.run('git config --global --unset http.proxy', shell=True, stdout=PIPE, stderr=PIPE)
-        status = 'OFF'
 
-    notification.notify(
-        title = 'kougei-config',
-        message='プロキシ設定' + status,
-        timeout=3
-        )
+    subprocess.call('PAUSE', shell=True)
+
     return
 
 if __name__ == '__main__':

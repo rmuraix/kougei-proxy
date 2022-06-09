@@ -1,3 +1,2 @@
 Nuitka==0.8.3
-plyer==2.0.0
 zstandard==0.17.0
