@@ -2,7 +2,7 @@
 ![License:MIT License](https://img.shields.io/github/license/rmuraix/kougei-proxy)
 ![issues](https://img.shields.io/github/issues/rmuraix/kougei-proxy)  
 Script for [Tokyo polytechnic university](https://t-kougei.ac.jp/) students.  
-東京工芸大学のkougei-wiFi.1xST下でGitなどを使用できるようにします。
+東京工芸大学のkougei-wiFi.1xST下でGitを使用できるようにします。
 ## Features
 - Gitのconfigの変更
 - SSIDを見てオンオフを決定する
@@ -20,8 +20,8 @@ Set-ExecutionPolicy Unrestricted
 `Unrestricted`の部分は[こちら](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2#powershell-execution-policies)を参考に変更できます。（UnrestrictedまたはBypassが必要です。）
 ### 実行ファイルを使う
 #### Windows
-Windowsで実行ポリシーを変更したくない方にオススメです。  
-`kougei-proxy-config.exe`を実行します。 
+実行ポリシーを変更したくない方にオススメです。  
+`kougei-config.exe`を実行します。 
 #### Mac
 ソースコードからビルドする必要があります。[Develop](#develop)を参考にビルドしてください。
 ## Develop
