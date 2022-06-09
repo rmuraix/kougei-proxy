@@ -19,6 +19,3 @@ if ($SSIDNAME -eq "kougei-WiFi.1xST") {
 }else{
     git config --global --unset http.proxy
 }
-
-write-host "Press any key to continue..."
-[void][System.Console]::ReadKey($true)
