@@ -19,8 +19,6 @@ def main():
     else:
         subprocess.run('git config --global --unset http.proxy', shell=True, stdout=PIPE, stderr=PIPE)
 
-    subprocess.call('PAUSE', shell=True)
-
     return
 
 if __name__ == '__main__':
