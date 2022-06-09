@@ -2,9 +2,9 @@ import subprocess
 from subprocess import PIPE
 
 def main():
-    print('kougei-config 1.0')
-    print('Copyright (C) Ryota Murai')
-    print('repo: https://github.com/rmuraix/kougei-proxy\n')
+    # kougei-config 1.0
+    # Copyright (C) Ryota Murai
+    # repo: https://github.com/rmuraix/kougei-proxy
 
     proc = subprocess.run('netsh wlan show interfaces', shell=True, stdout=PIPE, stderr=PIPE, text=True)
     datalist = proc.stdout.split('\n')
@@ -16,12 +16,8 @@ def main():
 
     if ssid == 'kougei-WiFi.1xST':
         subprocess.run('git config --global http.proxy {}'.format(proxy), shell=True, stdout=PIPE, stderr=PIPE)
-        print('Gitプロキシ:有効')
     else:
         subprocess.run('git config --global --unset http.proxy', shell=True, stdout=PIPE, stderr=PIPE)
-        print('Gitプロキシ:無効')
-
-    subprocess.call('PAUSE', shell=True)
 
     return
 
