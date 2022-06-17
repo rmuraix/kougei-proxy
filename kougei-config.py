@@ -2,7 +2,6 @@ import subprocess
 from subprocess import PIPE
 
 def main():
-    # kougei-config 1.0
     # Copyright (C) Ryota Murai
     # repo: https://github.com/rmuraix/kougei-proxy
 
