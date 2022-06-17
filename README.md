@@ -1,10 +1,11 @@
 # default
-![License:MIT License](https://img.shields.io/github/license/rmuraix/kougei-proxy)
-![issues](https://img.shields.io/github/issues/rmuraix/kougei-proxy)  
+![License:MIT License](https://img.shields.io/github/license/rmuraix/kougei-proxy)  
+[![DeepSource](https://deepsource.io/gh/rmuraix/kougei-proxy.svg/?label=active+issues&show_trend=true&token=YoxuUkgu37sKwPgyJqUOECP9)](https://deepsource.io/gh/rmuraix/kougei-proxy/?ref=repository-badge)[![DeepSource](https://deepsource.io/gh/rmuraix/kougei-proxy.svg/?label=resolved+issues&show_trend=true&token=YoxuUkgu37sKwPgyJqUOECP9)](https://deepsource.io/gh/rmuraix/kougei-proxy/?ref=repository-badge)  
+
 Script for [Tokyo polytechnic university](https://t-kougei.ac.jp/) students.  
 東京工芸大学のkougei-wiFi.1xST下でGitを使用できるようにします。
 ## Features
-- Gitのconfigの変更
+- Gitとpipのconfigの変更
 - SSIDを見てオンオフを決定する
 ## Download/Usage
 [こちら](https://github.com/rmuraix/kougei-proxy/releases)から最新のリリースをダウンロードしてください。
