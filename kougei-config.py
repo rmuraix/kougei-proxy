@@ -24,7 +24,5 @@ def main():
         if pipCall.find('Usage') == 1:
             subprocess.run('pip config unset global.proxy', shell=True, stdout=PIPE, stderr=PIPE)
 
-    return
-
 if __name__ == '__main__':
     main()
