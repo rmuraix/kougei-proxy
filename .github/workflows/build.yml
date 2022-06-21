@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: ubuntu-latest
         include:
           - os: ubuntu-latest
             exe_name: kougei-config
@@ -38,16 +38,6 @@ jobs:
       - name: build with nuitka
         run: |
           python -m nuitka --assume-yes-for-downloads --follow-imports --onefile kougei-config.py
-      - name: pack
-        run: |
-          ls  '${{github.workspace}}
-          if [[ "${{ matrix.os }}" == "windows-latest" ]]
-          then
-            7z a ${{ matrix.artifact_name }} '${{github.workspace}}/build/Release/${{ matrix.exe_name }}'
-          else
-            tar czvf ${{ matrix.artifact_name }} ${{github.workspace}}/build/${{ matrix.exe_name }}
-          fi
-          ls
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
