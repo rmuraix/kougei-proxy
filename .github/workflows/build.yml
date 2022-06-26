@@ -22,21 +22,21 @@ jobs:
           pip install zstandard
       - name: build with nuitka
         run: |
-          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads main.py
+          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads kougei-konfig.py
       - name: Package
         shell: powershell
         run:  |
-          7z a main_windows_x64.zip '${{github.workspace}}/main.exe'
+          7z a kougei-konfig_windows_x64.zip '${{github.workspace}}/kougei-konfig.exe'
       - uses: actions/upload-artifact@v3
         with:
-          name: main_windows_x64.zip
-          path: main_windows_x64.zip
+          name: kougei-konfig_windows_x64.zip
+          path: kougei-konfig_windows_x64.zip
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            main_windows_x64.zip
+            kougei-konfig_windows_x64.zip
             LICENSE
   build-on-macos:
     runs-on: macos-latest
@@ -52,21 +52,21 @@ jobs:
           pip install nuitka
       - name: build with nuitka
         run: |
-          python -m nuitka --follow-imports --onefile --macos-create-app-bundle --assume-yes-for-downloads main.py
+          python -m nuitka --follow-imports --onefile --macos-create-app-bundle --assume-yes-for-downloads kougei-konfig.py
       - name: Package
         shell: bash
         run:  |
-          tar czvf main_mac_x64.tgz ${{github.workspace}}/main.app
+          tar czvf kougei-konfig_mac_x64.tgz ${{github.workspace}}/kougei-konfig.app
       - uses: actions/upload-artifact@v3
         with:
-          name: main_mac_x64.tgz
-          path: main_mac_x64.tgz
+          name: kougei-konfig_mac_x64.tgz
+          path: kougei-konfig_mac_x64.tgz
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            main_mac_x64.tgz
+            kougei-konfig_mac_x64.tgz
             LICENSE
   build-on-ubuntu:
     runs-on: ubuntu-latest
@@ -82,20 +82,20 @@ jobs:
           pip install nuitka
       - name: build with nuitka
         run: |
-          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads main.py
+          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads kougei-konfig.py
       - name: Package
         shell: bash
         run:  |
-          tar czvf main_linux_x64.tgz ${{github.workspace}}/main.bin
+          tar czvf kougei-konfig_linux_x64.tgz ${{github.workspace}}/kougei-konfig.bin
       - uses: actions/upload-artifact@v3
         with:
-          name: main_linux_x64.tgz
-          path: main_linux_x64.tgz
+          name: kougei-konfig_linux_x64.tgz
+          path: kougei-konfig_linux_x64.tgz
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            main_linux_x64.tgz
+            kougei-konfig_linux_x64.tgz
             kougei-konfig.ps1
             LICENSE
