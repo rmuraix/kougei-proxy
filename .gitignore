@@ -133,3 +133,6 @@ dmypy.json
 *.dist/
 *.onefile-build/
 *.exe
+
+# vscode
+.vscode/

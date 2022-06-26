@@ -1,39 +1,101 @@
-name: Python package
+name: Python Package
 
-on:
+on: 
   push:
-    tags: '*'
+    tags: [v*]
     branches: [main]
   pull_request:
     branches: [main]
-
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  build-on-windows:
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.10
+      - name: setup python
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install nuitka
+          pip install zstandard
       - name: build with nuitka
         run: |
-          python -m nuitka --assume-yes-for-downloads --follow-imports --onefile kougei-config.py
-      - name: upload artifacts
-        uses: actions/upload-artifact@v2
+          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads main.py
+      - name: Package
+        shell: powershell
+        run:  |
+          7z a main_windows_x64.zip '${{github.workspace}}/main.exe'
+      - uses: actions/upload-artifact@v3
         with:
-          name: kougei-config.bin
-          path: kougei-config.bin
+          name: main_windows_x64.zip
+          path: main_windows_x64.zip
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            kougei-config.bin
+            main_windows_x64.zip
+            LICENSE
+  build-on-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install nuitka
+      - name: build with nuitka
+        run: |
+          python -m nuitka --follow-imports --onefile --macos-create-app-bundle --assume-yes-for-downloads main.py
+      - name: Package
+        shell: bash
+        run:  |
+          tar czvf main_mac_x64.tgz ${{github.workspace}}/main.app
+      - uses: actions/upload-artifact@v3
+        with:
+          name: main_mac_x64.tgz
+          path: main_mac_x64.tgz
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            main_mac_x64.tgz
+            LICENSE
+  build-on-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install nuitka
+      - name: build with nuitka
+        run: |
+          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads main.py
+      - name: Package
+        shell: bash
+        run:  |
+          tar czvf main_linux_x64.tgz ${{github.workspace}}/main.bin
+      - uses: actions/upload-artifact@v3
+        with:
+          name: main_linux_x64.tgz
+          path: main_linux_x64.tgz
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            main_linux_x64.tgz
+            kougei-konfig.ps1
             LICENSE
