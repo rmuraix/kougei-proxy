@@ -18,25 +18,24 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install nuitka
-          pip install zstandard
+          pip install -r requirements.txt
       - name: build with nuitka
         run: |
-          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads main.py
+          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads kougei-config.py
       - name: Package
         shell: powershell
         run:  |
-          7z a main_windows_x64.zip '${{github.workspace}}/main.exe'
+          7z a kougei-config_windows_x64.zip '${{github.workspace}}/kougei-config.exe'
       - uses: actions/upload-artifact@v3
         with:
-          name: main_windows_x64.zip
-          path: main_windows_x64.zip
+          name: kougei-config_windows_x64.zip
+          path: kougei-config_windows_x64.zip
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            main_windows_x64.zip
+            kougei-config_windows_x64.zip
             LICENSE
   build-on-macos:
     runs-on: macos-latest
@@ -49,24 +48,24 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install nuitka
+          pip install -r requirements.txt
       - name: build with nuitka
         run: |
-          python -m nuitka --follow-imports --onefile --macos-create-app-bundle --assume-yes-for-downloads main.py
+          python -m nuitka --follow-imports --onefile --macos-create-app-bundle --assume-yes-for-downloads kougei-config.py
       - name: Package
         shell: bash
         run:  |
-          tar czvf main_mac_x64.tgz ${{github.workspace}}/main.app
+          tar czvf kougei-config_mac_x64.tgz ${{github.workspace}}/kougei-config.app
       - uses: actions/upload-artifact@v3
         with:
-          name: main_mac_x64.tgz
-          path: main_mac_x64.tgz
+          name: kougei-config_mac_x64.tgz
+          path: kougei-config_mac_x64.tgz
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            main_mac_x64.tgz
+            kougei-config_mac_x64.tgz
             LICENSE
   build-on-ubuntu:
     runs-on: ubuntu-latest
@@ -79,23 +78,23 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install nuitka
+          pip install -r requirements.txt
       - name: build with nuitka
         run: |
-          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads main.py
+          python -m nuitka --follow-imports --onefile --assume-yes-for-downloads kougei-config.py
       - name: Package
         shell: bash
         run:  |
-          tar czvf main_linux_x64.tgz ${{github.workspace}}/main.bin
+          tar czvf kougei-config_linux_x64.tgz ${{github.workspace}}/kougei-config.bin
       - uses: actions/upload-artifact@v3
         with:
-          name: main_linux_x64.tgz
-          path: main_linux_x64.tgz
+          name: kougei-config_linux_x64.tgz
+          path: kougei-config_linux_x64.tgz
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            main_linux_x64.tgz
-            kougei-konfig.ps1
+            kougei-config_linux_x64.tgz
+            kougei-config.ps1
             LICENSE
